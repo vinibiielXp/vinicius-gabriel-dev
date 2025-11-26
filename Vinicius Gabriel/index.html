@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio – Vinicius Gabriel</title>
+
+    <!-- Fonte, reset e CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Acessibilidade -->
+    <meta name="description" content="Portfólio profissional com e-book multimídia, projetos, galeria e contato.">
+</head>
+
+<body>
+
+    <!-- Tema -->
+    <button class="theme-toggle" aria-label="Alternar tema" id="themeToggle">🌙</button>
+
+    <!-- Navegação -->
+    <header class="header">
+        <nav>
+            <a href="#home">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#ebook">E-book</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Landing -->
+    <section id="home" class="landing">
+
+        <img src="img/perfil.jpg" alt="Foto de Vinicius Gabriel" class="foto-perfil">
+
+        <h1>Olá, eu sou <span>Vinicius Gabriel</span></h1>
+        <p>Desenvolvedor Front-End • UI • Web Interativa</p>
+        <button onclick="scrollToSection('sobre')">Explore ↓</button>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="sobre section">
+        <h2>Sobre mim</h2>
+        <p>
+            Sou um desenvolvedor focado em criar interfaces modernas, acessíveis e interativas, 
+            combinando design e tecnologia para entregar experiências digitais incríveis. Atualmente
+            estou me formando em Análise e Desenvolvimento de Sistemas cursando o 5° período.
+        </p>
+    </section>
+
+    <!-- E-BOOK / Conteúdo multimídia -->
+    <section id="ebook" class="ebook section">
+    <h2>E-book Interativo</h2>
+
+    <article class="ebook-box">
+        <h3>Capítulo 1 — Minha Jornada no Front-End</h3>
+
+        <p>
+            Neste capítulo compartilho como iniciei no desenvolvimento web, os desafios que encontrei
+            e os princípios que guiam meus projetos. Falo sobre acessibilidade, design centrado no usuário
+            e a importância de construir interfaces claras e funcionais.
+        </p>
+
+        <button id="toggleTexto">Mostrar mais</button>
+        <p id="textoExtra" class="hidden">
+            Desenvolvimento front-end é mais do que codar telas. É sobre criar experiências,
+            resolver problemas e transformar ideias em interfaces reais. A cada projeto, busco
+            aplicar boas práticas, performance, responsividade e foco no usuário final.
+        </p>
+
+        <h4>Vídeo complementar</h4>
+        <video controls>
+            <source src="video.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+        </video>
+    </article>
+</section>
+
+
+    <!-- Projetos -->
+    <section id="projetos" class="projetos section">
+    <h2>Projetos</h2>
+
+    <div class="projetos-grid">
+
+        <!-- Projeto 1 – iFruit -->
+        <div class="projeto-card">
+            <img src="img/projetos/ifruit.jpg" alt="Tela inicial do aplicativo iFruit" class="projeto-img">
+            <h3>iFruit – App de Hortifruti</h3>
+            <p>Aplicativo desenvolvido com Expo Go inspirado no iFood, mas voltado para delivery de hortifruti. Possui tela inicial elegante, fluxo simples e design limpo.</p>
+            <div class="projeto-actions">
+                <a href="https://www.figma.com/proto/yDZsNVtOsNXYxr5GcqUMS4/iFruit?node-id=34-876&t=39P9HdceBgXQKo9H-1&starting-point-node-id=34%3A876"
+                   target="_blank"
+                   class="btn">Ver Protótipo</a>
+                <button onclick="toggleFavorito(this)">Favoritar ⭐</button>
+            </div>
+        </div>
+
+        <!-- Projeto 2 – FreeCode (Landing Page) -->
+        <div class="projeto-card">
+            <img src="img/projetos/freecode.jpg" alt="Landing Page do projeto FreeCode" class="projeto-img">
+            <h3>FreeCode – Landing Page</h3>
+            <p>Landing page criada para uma plataforma de aprendizado voltada a novos desenvolvedores. Layout responsivo, design limpo e foco em conversão.</p>
+            <div class="projeto-actions">
+                <a href="https://free-code-pi.vercel.app/" target="_blank" class="btn">Ver Página</a>
+                <button onclick="toggleFavorito(this)">Favoritar ⭐</button>
+            </div>
+        </div>
+
+        <!-- Projeto 3 – TechRecycle (Protótipo Figma) -->
+        <div class="projeto-card">
+            <img src="img/projetos/techrecycle.jpg" alt="Tela do aplicativo TechRecycle" class="projeto-img">
+            <h3>TechRecycle – App de Reciclagem</h3>
+            <p>Aplicativo prototipado no Figma para incentivar o descarte consciente de lixo eletrônico. Conta com mapa, pontos de coleta, agenda e telas de fluxo.</p>
+            <div class="projeto-actions">
+                <a href="https://www.figma.com/proto/3UOla3MWtclQJjaZq6MQeP/TechRecycle?node-id=2012-1559&p=f&t=advolP3KosczNXUa-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2012%3A1559"
+                   target="_blank"
+                   class="btn">Ver Protótipo</a>
+                <button onclick="toggleFavorito(this)">Favoritar ⭐</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+    <!-- Galeria -->
+    <section id="galeria" class="galeria section">
+    <h2>Galeria</h2>
+
+    <div class="galeria-grid">
+
+        <!-- TechRecycle -->
+        <img src="img/galeria/techrecycle1.jpg" alt="Tela inicial do TechRecycle">
+        <img src="img/galeria/techrecycle2.jpg" alt="Tela de funcionalidades do TechRecycle">
+
+        <!-- iFruit -->
+        <img src="img/galeria/ifruit1.jpg" alt="Tela inicial do iFruit">
+        <img src="img/galeria/ifruit2.jpg" alt="Tela de login do iFruit">
+        <img src="img/galeria/ifruit3.jpg" alt="Tela de opções do iFruit">
+
+        <!-- Figma geral -->
+        <img src="img/galeria/techrecycle-figma-overview.jpg" alt="Visão geral das telas do TechRecycle no Figma">
+
+        <!-- Vídeo FreeCode -->
+        <video class="galeria-video" controls>
+            <source src="videos/freecode-demo.mp4" type="video/mp4">
+            Seu navegador não suporta vídeo.
+        </video>
+
+    </div>
+</section>
+
+<!-- Contato -->
+    <section id="contato" class="contato section">
+        <h2>Contato</h2>
+
+        <form id="form-contato">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" required>
+
+            <label for="email">Email *</label>
+            <input type="email" id="email" required>
+
+            <label for="mensagem">Mensagem *</label>
+            <textarea id="mensagem" required></textarea>
+
+            <button type="submit">Enviar</button>
+
+            <p id="msg-sucesso" class="hidden">Mensagem enviada com sucesso! ✔</p>
+        </form>
+    </section>
+
+<!-- Modal da Galeria -->
+<div id="modalGaleria" class="modal-galeria">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="imgModal">
+</div>
+
+
+    <footer>
+        <p>© 2025 — Vinicius Gabriel</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
