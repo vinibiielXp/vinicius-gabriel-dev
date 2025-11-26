@@ -9,9 +9,6 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Prefetch (opcional) -->
-    <!-- <link rel="preload" href="img/perfil.jpg" as="image"> -->
 </head>
 <body>
 
@@ -24,14 +21,14 @@
             <a class="logo" href="#home" aria-label="Ir para início">Vinicius Gabriel</a>
 
             <nav class="nav" role="navigation" aria-label="Menu principal">
-                <button id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
-                <ul class="nav-list" id="navList">
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#ebook">E-book</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
-                    <li><a href="#galeria">Galeria</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                <button id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navList">☰</button>
+                <ul class="nav-list" id="navList" role="menu">
+                    <li role="none"><a role="menuitem" href="#home">Início</a></li>
+                    <li role="none"><a role="menuitem" href="#sobre">Sobre</a></li>
+                    <li role="none"><a role="menuitem" href="#ebook">E-book</a></li>
+                    <li role="none"><a role="menuitem" href="#projetos">Projetos</a></li>
+                    <li role="none"><a role="menuitem" href="#galeria">Galeria</a></li>
+                    <li role="none"><a role="menuitem" href="#contato">Contato</a></li>
                 </ul>
             </nav>
 
@@ -41,12 +38,15 @@
         </div>
     </header>
 
+    <!-- Overlay do menu (usado em mobile) -->
+    <div id="navOverlay" class="nav-overlay" hidden></div>
+
     <main id="main" tabindex="-1">
 
         <!-- Landing -->
         <section id="home" class="landing section" data-section>
-            <div class="landing-inner">
-                <img src="img/perfil.jpg" class="profile-photo" alt="Foto de Vinícius Gabriel">
+            <div class="landing-inner container">
+                <img src="img/perfil.jpg" loading="lazy" class="profile-photo" alt="Foto de Vinícius Gabriel">
                 <div class="landing-text">
                     <h1>Olá, eu sou <span>Vinicius Gabriel</span></h1>
                     <p class="lead">Desenvolvedor Front-End • UI • Web Interativa</p>
@@ -88,9 +88,10 @@
 
                     <h4>Vídeo complementar</h4>
                     <div class="video-wrap">
-                        <video controls width="100%" preload="metadata">
+                        <!-- poster opcional, e fallback link para a página caso o vídeo falte -->
+                        <video controls width="100%" preload="metadata" poster="img/freecode-poster.jpg">
                             <source src="videos/freecode-demo.mp4" type="video/mp4">
-                            Seu navegador não suporta vídeo.
+                            Seu navegador não suporta vídeo. <a href="https://free-code-pi.vercel.app/" target="_blank" rel="noopener">Ver a página FreeCode</a>
                         </video>
                     </div>
                 </article>
@@ -101,12 +102,11 @@
         <section id="projetos" class="projetos section" data-section>
             <div class="container">
                 <h2>Projetos</h2>
-
                 <div class="projetos-grid">
 
                     <!-- Projeto 1 – iFruit -->
                     <article class="projeto-card">
-                        <img src="img/projetos/ifruit.jpg" alt="Tela inicial do aplicativo iFruit" class="projeto-img">
+                        <img src="img/projetos/ifruit.jpg" loading="lazy" alt="Tela inicial do aplicativo iFruit" class="projeto-img">
                         <div class="projeto-body">
                             <h3>iFruit – App de Hortifruti</h3>
                             <p>Aplicativo desenvolvido com Expo Go inspirado no iFood, voltado para delivery de hortifruti. Tela inicial elegante e navegação fluida.</p>
@@ -120,7 +120,7 @@
 
                     <!-- Projeto 2 – FreeCode -->
                     <article class="projeto-card">
-                        <img src="img/projetos/freecode.jpg" alt="Landing Page do projeto FreeCode" class="projeto-img">
+                        <img src="img/projetos/freecode.jpg" loading="lazy" alt="Landing Page do projeto FreeCode" class="projeto-img">
                         <div class="projeto-body">
                             <h3>FreeCode – Landing Page</h3>
                             <p>Landing page criada para uma plataforma de aprendizado voltada a novos desenvolvedores. Layout responsivo e foco em conversão.</p>
@@ -133,7 +133,7 @@
 
                     <!-- Projeto 3 – TechRecycle -->
                     <article class="projeto-card">
-                        <img src="img/projetos/techrecycle.jpg" alt="Tela do aplicativo TechRecycle" class="projeto-img">
+                        <img src="img/projetos/techrecycle.jpg" loading="lazy" alt="Tela do aplicativo TechRecycle" class="projeto-img">
                         <div class="projeto-body">
                             <h3>TechRecycle – App de Reciclagem</h3>
                             <p>Aplicativo prototipado no Figma para incentivar o descarte consciente de lixo eletrônico. Conta com mapa e pontos de coleta.</p>
@@ -155,15 +155,15 @@
                 <h2>Galeria</h2>
 
                 <div class="galeria-grid">
-                    <img src="img/galeria/techrecycle1.jpg" alt="Tela inicial do TechRecycle" class="galeria-item">
-                    <img src="img/galeria/techrecycle2.jpg" alt="Tela de funcionalidades do TechRecycle" class="galeria-item">
-                    <img src="img/galeria/ifruit1.jpg" alt="Tela inicial do iFruit" class="galeria-item">
-                    <img src="img/galeria/ifruit2.jpg" alt="Tela de login do iFruit" class="galeria-item">
-                    <img src="img/galeria/ifruit3.jpg" alt="Tela de opções do iFruit" class="galeria-item">
-                    <img src="img/galeria/techrecycle-figma-overview.jpg" alt="Visão geral das telas do TechRecycle no Figma" class="galeria-item">
-                    <video class="galeria-video" controls>
+                    <img src="img/galeria/techrecycle1.jpg" loading="lazy" alt="Tela inicial do TechRecycle" class="galeria-item" tabindex="0" role="button">
+                    <img src="img/galeria/techrecycle2.jpg" loading="lazy" alt="Tela de funcionalidades do TechRecycle" class="galeria-item" tabindex="0" role="button">
+                    <img src="img/galeria/ifruit1.jpg" loading="lazy" alt="Tela inicial do iFruit" class="galeria-item" tabindex="0" role="button">
+                    <img src="img/galeria/ifruit2.jpg" loading="lazy" alt="Tela de login do iFruit" class="galeria-item" tabindex="0" role="button">
+                    <img src="img/galeria/ifruit3.jpg" loading="lazy" alt="Tela de opções do iFruit" class="galeria-item" tabindex="0" role="button">
+                    <img src="img/galeria/techrecycle-figma-overview.jpg" loading="lazy" alt="Visão geral das telas do TechRecycle no Figma" class="galeria-item" tabindex="0" role="button">
+                    <video class="galeria-video" controls preload="metadata" aria-label="Vídeo demonstrativo FreeCode">
                         <source src="videos/freecode-demo.mp4" type="video/mp4">
-                        Seu navegador não suporta vídeo.
+                        Seu navegador não suporta vídeo. <a href="https://free-code-pi.vercel.app/" target="_blank" rel="noopener">Ver a página FreeCode</a>
                     </video>
                 </div>
             </div>
