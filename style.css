@@ -1,371 +1,179 @@
-/* =========================================================
+/* ==========================
    VARIÁVEIS DE TEMA
-========================================================= */
+========================== */
 :root {
     --bg: #ffffff;
     --text: #111;
     --primary: #0a84ff;
-    --card-bg: rgba(255,255,255,0.12);
-    --glass-bg: rgba(255,255,255,0.35);
-    --glass-border: rgba(255,255,255,0.18);
+    --glass-bg: rgba(255,255,255,0.12);
 }
 
 .dark {
     --bg: #121212;
     --text: #f5f5f5;
-    --card-bg: rgba(0,0,0,0.35);
-    --glass-bg: rgba(0,0,0,0.30);
-    --glass-border: rgba(255,255,255,0.10);
+    --glass-bg: rgba(0,0,0,0.35);
 }
 
-/* =========================================================
-   RESET + GLOBAL
-========================================================= */
+/* ==========================
+   RESET / BASE
+========================== */
 body {
     margin: 0;
-    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: var(--bg);
     color: var(--text);
     scroll-behavior: smooth;
 }
 
-section {
-    padding: 80px 10%;
+.hidden {
+    display: none !important;
 }
 
-img, video {
-    max-width: 100%;
-}
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-}
-
-h1, h2, h3 {
-    margin-top: 0;
-}
-
-/* =========================================================
-   HEADER – Glass + responsivo + menu mobile
-========================================================= */
+/* ==========================
+   HEADER
+========================== */
 .header {
     position: fixed;
     top: 0;
     width: 100%;
     backdrop-filter: blur(12px);
-    background: var(--glass-bg);
-    border-bottom: 1px solid var(--glass-border);
-    z-index: 999;
+    background: rgba(0,0,0,0.35);
+    padding: 12px 20px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .header-inner {
-    max-width: 1200px;
-    margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 22px;
 }
 
 .logo {
-    font-weight: 700;
-    font-size: 20px;
     color: var(--text);
     text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-/* NAV DESKTOP */
+/* NAV */
 .nav-list {
-    list-style: none;
     display: flex;
-    gap: 22px;
-    margin: 0;
-    padding: 0;
+    gap: 20px;
 }
 
 .nav-list a {
-    color: var(--text);
     text-decoration: none;
-    font-weight: 600;
-    transition: 0.2s;
+    font-weight: bold;
+    color: var(--text);
 }
 
-.nav-list a:hover {
-    color: var(--primary);
-}
-
-/* NAV MOBILE */
 .nav-toggle {
     display: none;
-    font-size: 26px;
     background: none;
     border: none;
     color: var(--text);
+    font-size: 26px;
     cursor: pointer;
 }
 
-@media (max-width: 820px) {
+.header-actions {
+    display: flex;
+    align-items: center;
+}
 
+/* Botão de tema agora dentro da navbar */
+.theme-toggle {
+    padding: 6px 12px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ==========================
+   MOBILE NAV
+========================== */
+@media (max-width: 820px) {
     .nav-list {
-        position: absolute;
-        top: 64px;
-        right: 0;
-        width: 60%;
+        position: fixed;
+        top: 0;
+        right: -100%;
         height: 100vh;
+        width: 70%;
         background: var(--glass-bg);
-        backdrop-filter: blur(18px);
-        border-left: 1px solid var(--glass-border);
+        backdrop-filter: blur(14px);
         flex-direction: column;
-        align-items: start;
-        padding: 40px 30px;
-        transform: translateX(100%);
-        transition: 0.35s ease;
+        padding: 40px 20px;
+        transition: 0.3s;
+        z-index: 1500;
     }
 
     .nav-list.open {
-        transform: translateX(0);
+        right: 0;
     }
 
     .nav-toggle {
         display: block;
     }
+
+    .header-actions {
+        margin-left: 10px;
+    }
 }
 
-/* =========================================================
+/* Overlay do menu */
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1490;
+}
+
+/* ==========================
    LANDING
-========================================================= */
+========================== */
 .landing {
     height: 100vh;
     display: flex;
+    align-items: center;
     justify-content: center;
     text-align: center;
-    align-items: center;
 }
 
-.landing-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.lead {
-    margin: 8px 0 20px;
-    font-size: 18px;
-    opacity: 0.8;
-}
-
-.cta {
-    padding: 12px 24px;
-    border-radius: 10px;
-    background: var(--primary);
-    color: #fff;
-    border: none;
-    font-size: 17px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.cta:hover {
-    opacity: 0.85;
-}
-
-/* FOTO DE PERFIL */
 .profile-photo {
-    width: 190px;
-    height: 190px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    border: 3px solid var(--primary);
-    box-shadow: 0 0 20px rgba(0,140,255,0.45);
-    transition: transform .35s ease, box-shadow .35s ease;
-    object-fit: cover;
+    border: 3px solid #00bcd4;
+    box-shadow: 0 0 20px rgba(0,188,212,0.5);
+    transition: .3s ease;
 }
 
 .profile-photo:hover {
-    transform: scale(1.10);
-    box-shadow: 0 0 35px rgba(0,140,255,0.75);
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(0,188,212,0.8);
 }
 
-/* =========================================================
-   EBOOK
-========================================================= */
-.ebook-box {
-    background: var(--glass-bg);
-    border-radius: 16px;
-    padding: 40px;
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
-}
-
-.btn-outline {
-    background: transparent;
-    border: 2px solid var(--primary);
-    padding: 8px 18px;
-    color: var(--primary);
+.cta {
+    background: var(--primary);
+    border: none;
+    color: white;
+    padding: 12px 22px;
     border-radius: 10px;
     cursor: pointer;
-    margin: 15px 0;
 }
 
-.btn-outline:hover {
-    background: var(--primary);
-    color: white;
-}
-
-/* =========================================================
-   PROJETOS – Cards modernizados
-========================================================= */
-.projetos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 34px;
-    margin-top: 35px;
-}
-
-.projeto-card {
-    background: var(--card-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 14px;
-    backdrop-filter: blur(8px);
-    padding: 20px;
-    transition: 0.25s ease;
-}
-
-.projeto-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.25);
-}
-
-.projeto-img {
-    border-radius: 12px;
-    margin-bottom: 14px;
-}
-
-.projeto-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 12px;
-}
-
-.fav-btn {
-    padding: 8px 14px;
-    border: none;
-    background: #ffaa00;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* =========================================================
-   GALERIA
-========================================================= */
-.galeria-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
-    margin-top: 25px;
-}
-
-.galeria-item,
-.galeria-video {
-    border-radius: 12px;
-    transition: transform .25s ease, box-shadow .25s ease;
-    cursor: pointer;
-}
-
-.galeria-item:hover,
-.galeria-video:hover {
-    transform: scale(1.04);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-/* =========================================================
-   MODAL
-========================================================= */
-.modal-galeria {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    text-align: center;
-    padding-top: 60px;
-}
-
-.modal-content {
-    width: 80%;
-    max-width: 850px;
-    border-radius: 14px;
-    animation: zoom .3s ease;
-}
-
-.close-modal {
-    position: absolute;
-    top: 25px;
-    right: 35px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-@keyframes zoom {
-    from { transform: scale(0.6); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-/* =========================================================
-   CONTATO
-========================================================= */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-input, textarea {
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #aaa;
-    background: var(--bg);
-    color: var(--text);
-}
-
-.msg-success {
-    margin-top: 8px;
-    color: rgb(10, 175, 40);
-    font-weight: bold;
-}
-
-/* =========================================================
-   BOTÃO DE TEMA
-========================================================= */
-.theme-toggle {
-    position: fixed;
-    bottom: 22px;
-    right: 22px;
-    background: var(--primary);
-    color: #fff;
-    border-radius: 50%;
-    padding: 12px;
-    font-size: 22px;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s;
-    z-index: 9999;
-}
-
-.theme-toggle:hover {
-    transform: scale(1.1);
-}
-
-/* =========================================================
-   ANIMAÇÃO DAS SEÇÕES
-========================================================= */
+/* ==========================
+   SEÇÕES
+========================== */
 .section {
+    padding: 80px 10%;
     opacity: 0;
-    transform: translateY(45px);
-    transition: .7s ease;
+    transform: translateY(40px);
+    transition: .6s ease;
 }
 
 .section.visible {
@@ -373,21 +181,148 @@ input, textarea {
     transform: translateY(0);
 }
 
-/* =========================================================
-   RESPONSIVIDADE
-========================================================= */
-@media (max-width: 768px) {
+/* ==========================
+   BOTÕES
+========================== */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--primary) !important;
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    transition: .2s;
+}
 
-    section {
+.btn:hover {
+    opacity: .85;
+}
+
+.btn-outline {
+    padding: 8px 16px;
+    background: transparent;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* ==========================
+   PROJETOS
+========================== */
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 30px;
+}
+
+.projeto-card {
+    background: rgba(0,0,0,0.05);
+    border-radius: 14px;
+    padding: 20px;
+    backdrop-filter: blur(6px);
+    transition: .3s ease;
+}
+
+.projeto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.projeto-img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+/* ==========================
+   GALERIA
+========================== */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    gap: 18px;
+}
+
+.galeria-item,
+.galeria-video {
+    width: 100%;
+    border-radius: 12px;
+    transition: .25s;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.galeria-item:hover {
+    transform: scale(1.05);
+}
+
+/* Modal */
+.modal-galeria {
+    display: none;
+    position: fixed;
+    z-index: 1600;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 12px;
+    animation: zoom .3s ease;
+}
+
+.close-modal {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ==========================
+   FORMULÁRIO
+========================== */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input, textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.msg-success {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.msg-success.hidden {
+    display: none;
+}
+
+/* ==========================
+   RESPONSIVIDADE
+========================== */
+@media (max-width: 768px) {
+    .section {
         padding: 60px 20px;
     }
-
-    .landing {
-        padding-top: 100px;
-    }
-
-    .projetos-grid {
-        grid-template-columns: 1fr;
-    }
-
 }
