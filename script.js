@@ -1,30 +1,61 @@
-// Scroll suave por botão
+/* =========================================================
+   SCROLL SUAVE
+========================================================= */
 function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
 
-// Alternância de tema
-const toggle = document.getElementById("themeToggle");
-toggle.addEventListener("click", () => {
+/* =========================================================
+   ANIMAÇÃO DAS SEÇÕES
+========================================================= */
+const sections = document.querySelectorAll('.section');
+
+const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.18 });
+
+sections.forEach(sec => sectionObserver.observe(sec));
+
+/* =========================================================
+   TEMA (LIGHT / DARK)
+========================================================= */
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
     localStorage.setItem("tema", document.body.classList.contains("dark"));
 });
 
+// Carregar tema salvo
 if (localStorage.getItem("tema") === "true") {
     document.body.classList.add("dark");
 }
 
-document.getElementById("toggleTexto").addEventListener("click", () => {
-    const extra = document.getElementById("textoExtra");
-    extra.classList.toggle("hidden");
-    toggleTexto.innerText = extra.classList.contains("hidden") 
-        ? "Mostrar mais" 
+/* =========================================================
+   MOSTRAR MAIS (E-BOOK)
+========================================================= */
+const btnToggleTexto = document.getElementById("toggleTexto");
+const textoExtra = document.getElementById("textoExtra");
+
+btnToggleTexto.addEventListener("click", () => {
+    textoExtra.classList.toggle("hidden");
+    btnToggleTexto.innerText = textoExtra.classList.contains("hidden")
+        ? "Mostrar mais"
         : "Mostrar menos";
 });
 
-// Favoritar projetos (localStorage)
+/* =========================================================
+   FAVORITAR PROJETOS
+========================================================= */
+const botoesFavoritos = document.querySelectorAll(".projeto-card button");
+
 function toggleFavorito(btn) {
-    const titulo = btn.parentElement.querySelector("h3").innerText;
+    const card = btn.closest(".projeto-card");
+    const titulo = card.querySelector("h3").innerText;
 
     let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
@@ -39,30 +70,38 @@ function toggleFavorito(btn) {
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
 }
 
-// Validação simples de formulário
-document.getElementById("form-contato").addEventListener("submit", (e) => {
-    e.preventDefault();
-    document.getElementById("msg-sucesso").classList.remove("hidden");
-});
+// Manter favoritos após reload
+window.addEventListener("load", () => {
+    const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
-// Animações com IntersectionObserver
-const elements = document.querySelectorAll(".section");
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
+    botoesFavoritos.forEach(btn => {
+        const titulo = btn.closest(".projeto-card").querySelector("h3").innerText;
+        if (favoritos.includes(titulo)) {
+            btn.innerText = "Remover ✖";
         }
     });
 });
 
-elements.forEach(el => observer.observe(el));
-// Modal da galeria
+/* =========================================================
+   FORMULÁRIO CONTATO
+========================================================= */
+const form = document.getElementById("form-contato");
+const msgSucesso = document.getElementById("msg-sucesso");
+
+form.addEventListener("submit", e => {
+    e.preventDefault();
+    msgSucesso.classList.remove("hidden");
+
+    setTimeout(() => msgSucesso.classList.add("hidden"), 3000);
+});
+
+/* =========================================================
+   MODAL DA GALERIA
+========================================================= */
 const modal = document.getElementById("modalGaleria");
 const modalImg = document.getElementById("imgModal");
 const closeModal = document.querySelector(".close-modal");
 
-// Abre modal ao clicar na imagem da galeria
 document.querySelectorAll(".galeria-grid img").forEach(img => {
     img.addEventListener("click", () => {
         modal.style.display = "block";
@@ -70,22 +109,33 @@ document.querySelectorAll(".galeria-grid img").forEach(img => {
     });
 });
 
-// Fechar modal ao clicar no X
 closeModal.addEventListener("click", () => {
     modal.style.display = "none";
 });
 
-// Fechar modal clicando fora da imagem
-modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.style.display = "none";
-    }
+modal.addEventListener("click", e => {
+    if (e.target === modal) modal.style.display = "none";
 });
 
-// Fechar com tecla ESC
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        modal.style.display = "none";
-    }
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") modal.style.display = "none";
 });
 
+/* =========================================================
+   MENU MOBILE (HAMBÚRGUER)
+========================================================= */
+const navToggle = document.querySelector(".nav-toggle");
+const navList = document.querySelector(".nav-list");
+
+if (navToggle) {
+    navToggle.addEventListener("click", () => {
+        navList.classList.toggle("open");
+    });
+}
+
+// Fechar menu ao clicar em um link
+document.querySelectorAll(".nav-list a").forEach(link => {
+    link.addEventListener("click", () => {
+        navList.classList.remove("open");
+    });
+});
