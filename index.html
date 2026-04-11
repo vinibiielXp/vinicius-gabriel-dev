@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -240,3 +241,217 @@ LinkedIn
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Portfólio – Vinicius Gabriel</title>
+    <meta name="description" content="Portfólio profissional com e-book multimídia, projetos, galeria e contato.">
+    <meta name="theme-color" content="#0a84ff">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Skip link para acessibilidade -->
+    <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+    <!-- Header / Navegação -->
+    <header class="header" role="banner">
+        <div class="header-inner">
+            <a class="logo" href="#home" aria-label="Ir para início">Vinicius Gabriel</a>
+
+            <nav class="nav" role="navigation" aria-label="Menu principal">
+                <button id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navList">☰</button>
+                <ul class="nav-list" id="navList" role="menu">
+                    <li role="none"><a role="menuitem" href="#home">Início</a></li>
+                    <li role="none"><a role="menuitem" href="#sobre">Sobre</a></li>
+                    <li role="none"><a role="menuitem" href="#ebook">E-book</a></li>
+                    <li role="none"><a role="menuitem" href="#projetos">Projetos</a></li>
+                    <li role="none"><a role="menuitem" href="#galeria">Galeria</a></li>
+                    <li role="none"><a role="menuitem" href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="theme-toggle" aria-label="Alternar tema" id="themeToggle">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overlay do menu (usado em mobile) -->
+    <div id="navOverlay" class="nav-overlay" hidden></div>
+
+    <main id="main" tabindex="-1">
+
+        <!-- Landing -->
+        <section id="home" class="landing section" data-section>
+            <div class="landing-inner container">
+                <img src="img/perfil.jpg" loading="lazy" class="profile-photo" alt="Foto de Vinícius Gabriel">
+                <div class="landing-text">
+                    <h1>Olá, eu sou <span>Vinicius Gabriel</span></h1>
+                    <p class="lead">Desenvolvedor Front-End • UI • Web Interativa</p>
+                    <button class="cta" type="button" onclick="scrollToSection('sobre')">Explore ↓</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre -->
+        <section id="sobre" class="sobre section" data-section>
+            <div class="container">
+                <h2>Sobre mim</h2>
+                <p>
+                    Sou um desenvolvedor focado em criar interfaces modernas, acessíveis e interativas,
+                    combinando design e tecnologia para entregar experiências digitais incríveis. Atualmente
+                    estou me formando em Análise e Desenvolvimento de Sistemas cursando o 5° período.
+                </p>
+            </div>
+        </section>
+
+        <!-- E-BOOK / Conteúdo multimídia -->
+        <section id="ebook" class="ebook section" data-section>
+            <div class="container ebook-box">
+                <h2>E-book Interativo</h2>
+                <article>
+                    <h3>Capítulo 1 — Minha Jornada no Front-End</h3>
+                    <p>
+                        Neste capítulo compartilho como iniciei no desenvolvimento web, os desafios que encontrei
+                        e os princípios que guiam meus projetos. Falo sobre acessibilidade, design centrado no usuário
+                        e a importância de construir interfaces claras e funcionais.
+                    </p>
+
+                    <button id="toggleTexto" class="btn-outline" type="button">Mostrar mais</button>
+                    <p id="textoExtra" class="hidden">
+                        Desenvolvimento front-end é mais do que codar telas. É sobre criar experiências,
+                        resolver problemas e transformar ideias em interfaces reais. A cada projeto, busco
+                        aplicar boas práticas, performance, responsividade e foco no usuário final.
+                    </p>
+
+                    <h4>Vídeo complementar</h4>
+                    <div class="video-wrap">
+                        <!-- poster opcional, e fallback link para a página caso o vídeo falte -->
+                        <video controls width="100%" preload="metadata" poster="img/freecode-poster.jpg">
+                            <source src="video.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeo. <a href="https://free-code-pi.vercel.app/" target="_blank" rel="noopener">Ver a página FreeCode</a>
+                        </video>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Projetos -->
+        <section id="projetos" class="projetos section" data-section>
+            <div class="container">
+                <h2>Projetos</h2>
+                <div class="projetos-grid">
+
+                    <!-- Projeto 1 – iFruit -->
+                    <article class="projeto-card">
+                        <img src="img/projetos/ifruit.jpg" loading="lazy" alt="Tela inicial do aplicativo iFruit" class="projeto-img">
+                        <div class="projeto-body">
+                            <h3>iFruit – App de Hortifruti</h3>
+                            <p>Aplicativo desenvolvido com Expo Go inspirado no iFood, voltado para delivery de hortifruti. Tela inicial elegante e navegação fluida.</p>
+                            <div class="projeto-actions">
+                                <a href="https://www.figma.com/proto/yDZsNVtOsNXYxr5GcqUMS4/iFruit?node-id=34-876&t=39P9HdceBgXQKo9H-1&starting-point-node-id=34%3A876"
+                                   target="_blank" rel="noopener" class="btn">Ver Protótipo</a>
+                                <button class="fav-btn" type="button" onclick="toggleFavorito(this)">Favoritar ⭐</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Projeto 2 – FreeCode -->
+                    <article class="projeto-card">
+                        <img src="img/projetos/freecode.jpg" loading="lazy" alt="Landing Page do projeto FreeCode" class="projeto-img">
+                        <div class="projeto-body">
+                            <h3>FreeCode – Landing Page</h3>
+                            <p>Landing page criada para uma plataforma de aprendizado voltada a novos desenvolvedores. Layout responsivo e foco em conversão.</p>
+                            <div class="projeto-actions">
+                                <a href="https://free-code-pi.vercel.app/" target="_blank" rel="noopener" class="btn">Ver Página</a>
+                                <button class="fav-btn" type="button" onclick="toggleFavorito(this)">Favoritar ⭐</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Projeto 3 – TechRecycle -->
+                    <article class="projeto-card">
+                        <img src="img/projetos/techrecycle.jpg" loading="lazy" alt="Tela do aplicativo TechRecycle" class="projeto-img">
+                        <div class="projeto-body">
+                            <h3>TechRecycle – App de Reciclagem</h3>
+                            <p>Aplicativo prototipado no Figma para incentivar o descarte consciente de lixo eletrônico. Conta com mapa e pontos de coleta.</p>
+                            <div class="projeto-actions">
+                                <a href="https://www.figma.com/proto/3UOla3MWtclQJjaZq6MQeP/TechRecycle?node-id=2012-1559&p=f&t=advolP3KosczNXUa-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2012%3A1559"
+                                   target="_blank" rel="noopener" class="btn">Ver Protótipo</a>
+                                <button class="fav-btn" type="button" onclick="toggleFavorito(this)">Favoritar ⭐</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria -->
+        <section id="galeria" class="galeria section" data-section>
+            <div class="container">
+                <h2>Galeria</h2>
+
+                <div class="galeria-grid">
+                    <img src="img/galeria/techrecycle1.jpg" loading="lazy" alt="Tela inicial do TechRecycle" class="galeria-item" tabindex="0" role="button">
+                    <img src="img/galeria/techrecycle2.jpg" loading="lazy" alt="Tela de funcionalidades do TechRecycle" class="galeria-item" tabindex="0" role="button">
+                    <img src="img/galeria/ifruit1.jpg" loading="lazy" alt="Tela inicial do iFruit" class="galeria-item" tabindex="0" role="button">
+                    <img src="img/galeria/ifruit2.jpg" loading="lazy" alt="Tela de login do iFruit" class="galeria-item" tabindex="0" role="button">
+                    <img src="img/galeria/ifruit3.jpg" loading="lazy" alt="Tela de opções do iFruit" class="galeria-item" tabindex="0" role="button">
+                    <img src="img/galeria/techrecycle-figma-overview.jpg" loading="lazy" alt="Visão geral das telas do TechRecycle no Figma" class="galeria-item" tabindex="0" role="button">
+                    <video class="galeria-video" controls preload="metadata" aria-label="Vídeo demonstrativo FreeCode">
+                        <source src="videos/freecode-demo.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeo. <a href="https://free-code-pi.vercel.app/" target="_blank" rel="noopener">Ver a página FreeCode</a>
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="contato section" data-section>
+            <div class="container">
+                <h2>Contato</h2>
+
+                <form id="form-contato" class="form" novalidate>
+                    <label for="nome">Nome *</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="mensagem">Mensagem *</label>
+                    <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Enviar</button>
+                        <p id="msg-sucesso" class="msg-success hidden" role="status" aria-live="polite">Mensagem enviada com sucesso! ✔</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal da Galeria -->
+    <div id="modalGaleria" class="modal-galeria" aria-hidden="true" role="dialog" aria-label="Galeria de imagens">
+        <button class="close-modal" aria-label="Fechar">&times;</button>
+        <img class="modal-content" id="imgModal" alt="">
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <p>© 2025 — Vinicius Gabriel</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js" defer></script>
+</body>
+</html>
+>>>>>>> 2a00ef4d22ce336e8d20d7e6a1dda4b0bafdad3d
